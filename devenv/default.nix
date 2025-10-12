@@ -20,6 +20,8 @@
     shfmt = {
       enable = lib.mkDefault true;
       files = "\\.(sh|bash|envrc|envrc\\..*)$";
+      # Format with two spaces indent, instead of tabulator
+      entry = "${pkgs.shfmt}/bin/shfmt -i 2 -w";
     };
 
     nixfmt-rfc-style.enable = true;
