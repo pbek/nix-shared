@@ -17,6 +17,11 @@
       files = "\\.(js|json|md|yaml|yml)$";
     };
 
+    shfmt = {
+      enable = lib.mkDefault true;
+      files = "\\.(sh|bash|envrc|envrc\\..*)$";
+    };
+
     nixfmt-rfc-style.enable = true;
 
     statix.enable = true;
