@@ -14,7 +14,7 @@
   git-hooks.hooks = {
     prettier = {
       enable = lib.mkDefault true;
-      files = "\\.(js|json|md|yaml|yml)$";
+      files = "\\.(js|json|md|yaml|yml|vue)$";
     };
 
     shfmt = {
