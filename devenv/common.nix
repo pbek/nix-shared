@@ -25,8 +25,8 @@
     };
 
     nixfmt-rfc-style.enable = true;
-
     statix.enable = true;
+    gitlint.enable = true;
 
     # https://devenv.sh/reference/options/#git-hookshooksdeadnix
     # https://github.com/astro/deadnix
