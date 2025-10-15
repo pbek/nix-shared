@@ -4,4 +4,4 @@ inputs:
     url: github:cachix/devenv-nixpkgs/rolling
 
 imports:
-  - ./devenv/default.nix
+  - ./devenv/common.nix
