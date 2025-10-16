@@ -10,6 +10,8 @@
     just # Task runner
   ];
 
+  files.".shared/common.just".text = builtins.readFile ./justfile;
+
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
     prettier = {
