@@ -3,7 +3,11 @@
   lib,
   ...
 }:
-
+let
+  inherit (lib)
+    mkDefault
+    ;
+in
 {
   # https://devenv.sh/packages/
   packages = with pkgs; [
@@ -15,12 +19,12 @@
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
     prettier = {
-      enable = lib.mkDefault true;
+      enable = mkDefault true;
       files = "\\.(js|json|md|yaml|yml|vue)$";
     };
 
     shfmt = {
-      enable = lib.mkDefault true;
+      enable = mkDefault true;
       files = "\\.(sh|bash|envrc|envrc\\..*)$";
       # Format with two spaces indent, instead of tabulator
       entry = "${pkgs.shfmt}/bin/shfmt -i 2 -w";
@@ -28,7 +32,15 @@
 
     nixfmt-rfc-style.enable = true;
     statix.enable = true;
-    gitlint.enable = lib.mkDefault true;
+
+    gitlint = {
+      # Ignore empty body (B6) and allow titles up to 100 characters
+      # We also need to ignore T8 (body line length) and B4 (Second line is not empty),
+      # because of https://github.com/jorisroovers/gitlint/issues/499
+      # Using args didn't work, because of https://github.com/cachix/git-hooks.nix/issues/641
+      # If we need more config we could also pull in a shared config file and set it with "-C"
+      entry = "${pkgs.gitlint}/bin/gitlint -c general.ignore=B6,B4,T8 -c title-max-length.line-length=100 --staged --msg-filename";
+    };
 
     # https://devenv.sh/reference/options/#git-hookshooksdeadnix
     # https://github.com/astro/deadnix
