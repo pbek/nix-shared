@@ -34,6 +34,11 @@ in
         entry = "${pkgs.shfmt}/bin/shfmt -i 2 -w";
       };
 
+      shellcheck = {
+        enable = true;
+        files = "\\.(sh|bash)$";
+      };
+
       nixfmt-rfc-style.enable = true;
       statix.enable = true;
 
