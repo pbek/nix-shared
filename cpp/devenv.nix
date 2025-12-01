@@ -22,6 +22,12 @@
     cmake-format.enable = true;
     clang-format = {
       enable = true;
+      # Exclude javascript, json, etc.
+      types_or = [
+        "c"
+        "c++"
+        "objective-c"
+      ];
     };
 
     # Custom pre-commit hook to format justfile
