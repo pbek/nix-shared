@@ -15,7 +15,7 @@
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
     prettier.enable = lib.mkDefault true;
-    eslint.enable = true;
+    eslint.enable = lib.mkDefault true;
   };
 
   # See full reference at https://devenv.sh/reference/options/
