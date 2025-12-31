@@ -8,7 +8,7 @@
   languages.go.enable = true;
 
   enterShell = ''
-    echo "📦 Go version: $(go version | head -n 1)"
+    echo "🐹 Go version: $(go version | head -n 1)"
   '';
 
   # https://devenv.sh/git-hooks/
