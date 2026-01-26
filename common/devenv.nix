@@ -39,7 +39,7 @@ in
         files = "\\.(sh|bash)$";
       };
 
-      nixfmt-rfc-style.enable = true;
+      nixfmt.enable = true;
       statix.enable = true;
 
       gitlint = {
