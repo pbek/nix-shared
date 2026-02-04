@@ -1,4 +1,7 @@
-_:
+{
+  config,
+  ...
+}:
 
 {
   # https://devenv.sh/supported-languages/php/
@@ -20,6 +23,10 @@ _:
         excludes = [ "config/bundles.php" ];
         # Don't spam so many messages
         require_serial = true;
+        # Override the entry to use vendor version instead of Nix-provided version
+        # The Nix version (3.87.2) is too old and incompatible with PHP 8.4
+        # The vendor version (3.93.1) works correctly
+        entry = "${config.languages.php.package}/bin/php vendor/bin/php-cs-fixer fix";
       };
     };
   };
